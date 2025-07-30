@@ -1,0 +1,131 @@
+#!/usr/bin/env python3
+"""
+Expand authentic dataset to 50+ questions per topic
+"""
+
+import sys
+sys.path.append('.')
+from database import DatabaseManager, QAPair
+
+def expand_politician_data():
+    """Add more authentic politician questions to reach 50+"""
+    return [
+        # More US Presidents
+        QAPair(topic='politician', example='George Washington', passage='Washington refused to accept a salary as president, but Congress insisted he take one to set a precedent. He was the only president elected unanimously by the Electoral College, and this happened twice. He owned over 300 slaves but freed them in his will. He died after his doctors drained 40% of his blood trying to cure a throat infection.', entity='refused salary', question='What did Washington initially refuse to accept as president?', answer='salary', explanation='Washington refused to accept a salary as president, but Congress insisted to set a precedent for future presidents.'),
+        
+        QAPair(topic='politician', example='Thomas Jefferson', passage='Jefferson wrote the Declaration of Independence when he was only 33 years old. He founded the University of Virginia and designed its buildings. He owned over 600 slaves despite writing "all men are created equal." He died on July 4, 1826—the same day as John Adams and the 50th anniversary of the Declaration of Independence.', entity='wrote Declaration at 33', question='How old was Jefferson when he wrote the Declaration of Independence?', answer='33 years old', explanation='Thomas Jefferson was only 33 years old when he wrote the Declaration of Independence in 1776.'),
+        
+        QAPair(topic='politician', example='Andrew Jackson', passage='Jackson fought in over 100 duels, mostly defending his wife\'s honor. He carried two bullets in his body for most of his life from dueling wounds. He was the first president to survive an assassination attempt—both of the assassin\'s pistols misfired. Jackson beat his would-be assassin with his walking cane. He paid off the entire national debt, the only president to do so.', entity='fought over 100 duels', question='How many duels did Andrew Jackson fight during his lifetime?', answer='over 100', explanation='Andrew Jackson fought in over 100 duels, mostly to defend his wife\'s honor, and carried bullets in his body from these encounters.'),
+        
+        QAPair(topic='politician', example='Theodore Roosevelt', passage='Roosevelt was the youngest president at age 42 after McKinley\'s assassination. He was shot in the chest during a campaign speech but continued speaking for 90 minutes with the bullet still in him. He was the first president to fly in an airplane, ride in a car, and go underwater in a submarine. He won the Nobel Peace Prize for mediating the Russo-Japanese War.', entity='spoke 90 minutes with bullet', question='What did Roosevelt do after being shot during a campaign speech?', answer='continued speaking for 90 minutes', explanation='After being shot in the chest, Roosevelt continued his campaign speech for 90 minutes with the bullet still in his body.'),
+        
+        # International Leaders
+        QAPair(topic='politician', example='Catherine the Great', passage='Catherine was actually German, not Russian—her real name was Sophie Friederike Auguste. She came to power by overthrowing her own husband, Peter III, in a coup. She added 200,000 square miles to Russian territory and founded the Hermitage Museum. She corresponded with Voltaire and other Enlightenment philosophers and considered herself an "enlightened despot."', entity='overthrew her husband', question='How did Catherine the Great come to power in Russia?', answer='overthrew her own husband in a coup', explanation='Catherine the Great came to power by overthrowing her own husband, Peter III, in a military coup.'),
+        
+        QAPair(topic='politician', example='Otto von Bismarck', passage='Bismarck unified Germany through three wars and was known as the "Iron Chancellor." He created the first modern welfare state, introducing health insurance, accident insurance, and old-age pensions to prevent socialist revolution. He famously said "Politics is the art of the possible." He was dismissed by Kaiser Wilhelm II in 1890 after 19 years in power.', entity='first modern welfare state', question='What social innovation did Bismarck create to prevent revolution?', answer='first modern welfare state', explanation='Bismarck created the first modern welfare state with health, accident, and pension insurance to prevent socialist revolution.'),
+        
+        QAPair(topic='politician', example='Sun Yat-sen', passage='Sun Yat-sen is called the "Father of Modern China" for his role in overthrowing the Qing Dynasty. He was educated in Hawaii and spoke fluent English. He spent 16 years in exile fundraising for the revolution. He was elected the first provisional president of the Republic of China in 1912 but stepped down after 45 days to avoid civil war.', entity='stepped down after 45 days', question='How long did Sun Yat-sen serve as China\'s first president?', answer='45 days', explanation='Sun Yat-sen served as China\'s first provisional president for only 45 days before stepping down to avoid civil war.'),
+        
+        # Modern Leaders
+        QAPair(topic='politician', example='Mikhail Gorbachev', passage='Gorbachev introduced glasnost (openness) and perestroika (restructuring) that led to the end of the Cold War. He was the only Soviet leader born after the Russian Revolution. He won the Nobel Peace Prize in 1990. He appeared in a Pizza Hut commercial in 1997 to earn money after the Soviet collapse. He has a distinctive birthmark on his forehead.', entity='appeared in Pizza Hut commercial', question='What unusual commercial did Gorbachev appear in after the Soviet collapse?', answer='Pizza Hut commercial', explanation='Gorbachev appeared in a Pizza Hut commercial in 1997 to earn money after the collapse of the Soviet Union.'),
+        
+        QAPair(topic='politician', example='Golda Meir', passage='Meir grew up in Milwaukee and worked as a teacher before emigrating to Palestine. She was one of only two women to sign Israel\'s Declaration of Independence. She was known for her tough negotiating style and was called "the only man in the cabinet." She chain-smoked and was famous for her late-night kitchen cabinet meetings over coffee and cake.', entity='only man in cabinet', question='What nickname reflected Golda Meir\'s tough leadership style?', answer='the only man in the cabinet', explanation='Golda Meir was nicknamed "the only man in the cabinet" due to her tough, uncompromising leadership style.'),
+        
+        # Revolutionary Leaders
+        QAPair(topic='politician', example='Simon Bolivar', passage='Bolivar liberated six South American countries from Spanish rule and is called "El Libertador." He crossed the Andes with his army in one of military history\'s greatest feats. He was inspired by Napoleon and George Washington. He died at age 47 from tuberculosis, saying "America is ungovernable. Those who have served the revolution have plowed the sea."', entity='crossed the Andes', question='What military feat did Bolivar accomplish during South American independence?', answer='crossed the Andes with his army', explanation='Bolivar crossed the Andes mountains with his army in one of military history\'s greatest logistical feats.'),
+        
+        QAPair(topic='politician', example='Giuseppe Garibaldi', passage='Garibaldi unified Italy and was called the "Hero of Two Worlds" for his military campaigns in South America and Europe. He conquered Sicily and southern Italy with just 1,000 volunteers known as "Red Shirts." He refused all rewards and titles, retiring to a small island. Abraham Lincoln offered him a command in the Union Army during the Civil War.', entity='conquered with 1,000 volunteers', question='How many volunteers did Garibaldi use to conquer Sicily and southern Italy?', answer='1,000 volunteers', explanation='Garibaldi conquered Sicily and southern Italy with just 1,000 volunteers known as the "Red Shirts."'),
+        
+        # Dictators and Controversial Figures
+        QAPair(topic='politician', example='Adolf Hitler', passage='Hitler was rejected from art school twice before entering politics. He was temporarily blinded by poison gas during WWI. He was a vegetarian and animal rights advocate who banned vivisection. He never learned to drive and was afraid of flying until 1932. He survived over 40 assassination attempts during his time in power.', entity='rejected from art school twice', question='What career did Hitler originally pursue before politics?', answer='art', explanation='Hitler was rejected from art school twice before entering politics, originally wanting to be an artist.'),
+        
+        QAPair(topic='politician', example='Joseph Stalin', passage='Stalin\'s real name was Ioseb Besarionis dze Jughashvili. He was studying to be a priest when he became a revolutionary. He had a withered left arm from a childhood accident. He was only 5\'4" tall but wore platform shoes to appear taller. He was nominated for the Nobel Peace Prize twice, in 1945 and 1948.', entity='studying to be priest', question='What was Stalin studying before becoming a revolutionary?', answer='to be a priest', explanation='Stalin was studying to be a priest in a Georgian Orthodox seminary before becoming a revolutionary.'),
+        
+        # Women Leaders
+        QAPair(topic='politician', example='Elizabeth I', passage='Elizabeth I ruled England for 45 years and never married, earning the nickname "The Virgin Queen." She spoke six languages fluently and was highly educated. She survived smallpox but was left with scars that she covered with white makeup. She defeated the Spanish Armada in 1588, establishing England as a naval power. She had over 3,000 dresses.', entity='had over 3,000 dresses', question='How many dresses did Elizabeth I own?', answer='over 3,000', explanation='Elizabeth I was famous for her elaborate wardrobe and owned over 3,000 dresses during her reign.'),
+        
+        QAPair(topic='politician', example='Hatshepsut', passage='Hatshepsut was one of the most successful female pharaohs, ruling Egypt for 22 years. She wore a false beard and male regalia to assert her authority. She built more monuments than any pharaoh except Ramesses II. Her stepson Thutmose III tried to erase her from history after her death by defacing her monuments. She was rediscovered by archaeologists in the 19th century.', entity='wore false beard', question='What did Hatshepsut wear to assert her authority as pharaoh?', answer='false beard and male regalia', explanation='Hatshepsut wore a false beard and male regalia to assert her authority as a female pharaoh in ancient Egypt.'),
+        
+        # Political Scandals
+        QAPair(topic='politician', example='Warren G. Harding', passage='Harding\'s presidency was marked by the Teapot Dome scandal, considered one of the worst in U.S. history. He coined the term "normalcy" and was known for his extramarital affairs. He died suddenly in 1923, possibly from a heart attack or stroke. His wife may have poisoned him, though this was never proven. He was the first president to own a radio.', entity='wife may have poisoned him', question='What controversial theory surrounds Harding\'s death?', answer='his wife may have poisoned him', explanation='There\'s an unproven theory that Harding\'s wife may have poisoned him, though he likely died from natural causes.'),
+        
+        QAPair(topic='politician', example='Spiro Agnew', passage='Agnew was the only U.S. Vice President to resign due to criminal charges, pleading no contest to tax evasion in 1973. He was known for his alliterative attacks on critics, calling them "nattering nabobs of negativism." He took bribes while serving as Maryland governor and continued taking them as Vice President. He was Nixon\'s first choice for VP to appeal to Southern voters.', entity='nattering nabobs of negativism', question='What alliterative phrase did Spiro Agnew use to attack his critics?', answer='nattering nabobs of negativism', explanation='Spiro Agnew famously called his critics "nattering nabobs of negativism" in his characteristic alliterative style.'),
+        
+        # Political Dynasties
+        QAPair(topic='politician', example='John Quincy Adams', passage='John Quincy Adams was the first president who was the son of a former president. He was the only president to serve in the House of Representatives after his presidency, where he fought against slavery for 17 years. He was fluent in seven languages and served as a diplomat before becoming president. He died of a stroke on the House floor in 1848.', entity='died on House floor', question='Where did John Quincy Adams die?', answer='on the House floor', explanation='John Quincy Adams died of a stroke on the House of Representatives floor in 1848 while still serving as a congressman.'),
+        
+        QAPair(topic='politician', example='Robert F. Kennedy', passage='RFK served as Attorney General under his brother John F. Kennedy and was known for his civil rights work. He was assassinated in 1968 while running for president, just two months after Martin Luther King Jr.\'s assassination. He had 11 children with his wife Ethel. He was shot by Sirhan Sirhan at the Ambassador Hotel in Los Angeles after winning the California primary.', entity='11 children', question='How many children did Robert F. Kennedy have?', answer='11 children', explanation='Robert F. Kennedy had 11 children with his wife Ethel Kennedy.'),
+        
+        # Ancient Leaders
+        QAPair(topic='politician', example='Hammurabi', passage='Hammurabi created one of the world\'s first written legal codes around 1750 BC. The Code of Hammurabi contained 282 laws and established the principle of "eye for an eye." The code was carved on a black stone pillar and displayed publicly so all could see the laws. It covered everything from trade disputes to family relationships and established different punishments based on social class.', entity='282 laws', question='How many laws were included in Hammurabi\'s Code?', answer='282 laws', explanation='The Code of Hammurabi contained 282 laws covering various aspects of Babylonian society.'),
+        
+        QAPair(topic='politician', example='Pericles', passage='Pericles led Athens during its Golden Age and oversaw the construction of the Parthenon. He introduced pay for public service, allowing poor citizens to participate in government. He gave the famous Funeral Oration honoring Athenian war dead. He died during the plague that devastated Athens in 429 BC. His leadership period is called the "Age of Pericles."', entity='introduced pay for public service', question='What democratic innovation did Pericles introduce in Athens?', answer='pay for public service', explanation='Pericles introduced pay for public service, allowing poor citizens to participate in Athenian government for the first time.'),
+        
+        # Modern Controversial Leaders
+        QAPair(topic='politician', example='Idi Amin', passage='Amin ruled Uganda from 1971-1979 and was responsible for the deaths of an estimated 100,000 to 500,000 people. He expelled all Asians from Uganda in 1972, devastating the economy. He declared himself "King of Scotland" and claimed to be the uncrowned King of Scotland. He was overthrown in 1979 and fled to Saudi Arabia, where he lived until his death in 2003.', entity='declared himself King of Scotland', question='What bizarre title did Idi Amin give himself?', answer='King of Scotland', explanation='Idi Amin bizarrely declared himself "King of Scotland" and claimed to be the uncrowned King of Scotland.'),
+        
+        QAPair(topic='politician', example='Pol Pot', passage='Pol Pot led the Khmer Rouge in Cambodia and was responsible for the Cambodian genocide that killed 1.5-2 million people. He forced urban populations into agricultural labor camps and targeted intellectuals, including anyone who wore glasses. He was educated in Paris and was influenced by Marxist ideology. He died under house arrest in 1998, never facing trial for his crimes.', entity='targeted people with glasses', question='What unusual group did Pol Pot specifically target during his regime?', answer='people who wore glasses', explanation='Pol Pot targeted intellectuals, including anyone who wore glasses, as he saw them as a threat to his agrarian communist ideology.'),
+        
+        # Liberation Leaders
+        QAPair(topic='politician', example='Ho Chi Minh', passage='Ho Chi Minh worked as a cook in London and a photo retoucher in Paris before becoming a revolutionary. He founded the Vietnamese Communist Party and led Vietnam\'s independence movement against France and later the United States. He lived simply, wearing sandals made from old tires. He died in 1969, six years before North Vietnam\'s victory. His body is preserved in a mausoleum in Hanoi.', entity='sandals from old tires', question='What did Ho Chi Minh make his sandals from?', answer='old tires', explanation='Ho Chi Minh was known for his simple lifestyle and wore sandals made from old tires.'),
+        
+        QAPair(topic='politician', example='Kwame Nkrumah', passage='Nkrumah led Ghana to independence in 1957, making it the first African colony to gain independence. He coined the term "neocolonialism" and promoted Pan-Africanism. He was educated in the United States and earned degrees from Lincoln University and the University of Pennsylvania. He was overthrown in a military coup in 1966 while visiting China and died in exile in Guinea.', entity='coined neocolonialism', question='What political term did Kwame Nkrumah coin?', answer='neocolonialism', explanation='Kwame Nkrumah coined the term "neocolonialism" to describe continued economic control of former colonies.'),
+    ]
+
+def expand_scientist_data():
+    """Add more authentic scientist questions to reach 50+"""
+    return [
+        # More Nobel Prize Winners
+        QAPair(topic='scientist', example='Watson and Crick', passage='James Watson was only 25 when he and Francis Crick discovered DNA\'s structure in 1953. They used Rosalind Franklin\'s X-ray crystallography data without her permission. Watson wrote a controversial book "The Double Helix" that portrayed Franklin negatively. Crick was known for his loud voice and would announce "We have found the secret of life!" in pubs. They built physical models using metal plates and rods.', entity='Watson only 25', question='How old was James Watson when he discovered DNA\'s structure?', answer='25 years old', explanation='James Watson was only 25 years old when he and Francis Crick discovered the structure of DNA in 1953.'),
+        
+        QAPair(topic='scientist', example='Barbara McClintock', passage='McClintock discovered "jumping genes" (transposons) in corn plants in the 1940s, but her work was so revolutionary that it was ignored for decades. She won the Nobel Prize in 1983 at age 81, becoming the first woman to win an unshared Nobel in Physiology or Medicine. She never married and lived alone on the Cold Spring Harbor Laboratory grounds. She could identify individual corn plants by their chromosomes.', entity='first woman unshared Nobel', question='What distinction did Barbara McClintock achieve with her Nobel Prize?', answer='first woman to win unshared Nobel in Physiology or Medicine', explanation='McClintock was the first woman to win an unshared Nobel Prize in Physiology or Medicine when she won in 1983.'),
+        
+        QAPair(topic='scientist', example='Linus Pauling', passage='Pauling is the only person to win two unshared Nobel Prizes—Chemistry in 1954 and Peace in 1962. He advocated taking massive doses of vitamin C, claiming it could prevent colds and cancer, though this was later disputed. He determined the structure of proteins and discovered the molecular basis of sickle cell anemia. The FBI monitored him for his peace activism during the Cold War.', entity='FBI monitored him', question='Why did the FBI monitor Linus Pauling?', answer='for his peace activism during Cold War', explanation='The FBI monitored Linus Pauling because of his peace activism and anti-nuclear weapons stance during the Cold War.'),
+        
+        # Physics Pioneers
+        QAPair(topic='scientist', example='Enrico Fermi', passage='Fermi created the first controlled nuclear chain reaction in a squash court under the University of Chicago in 1942. He was known as the "architect of the atomic age." He could solve complex physics problems in his head and was famous for his "Fermi problems"—rough calculations to estimate quantities. He died at age 53 from stomach cancer, possibly related to radiation exposure.', entity='squash court nuclear reaction', question='Where did Fermi create the first controlled nuclear chain reaction?', answer='in a squash court under University of Chicago', explanation='Fermi created the first controlled nuclear chain reaction in a squash court beneath the University of Chicago in 1942.'),
+        
+        QAPair(topic='scientist', example='Richard Feynman', passage='Feynman worked on the Manhattan Project and later won the Nobel Prize for quantum electrodynamics. He was known for his bongo playing, safe-cracking hobby, and strip club visits where he would work on physics. He served on the Challenger disaster commission and demonstrated the O-ring failure with a glass of ice water. He refused to join the National Academy of Sciences, saying it was elitist.', entity='demonstrated with ice water', question='How did Feynman demonstrate the Challenger disaster cause?', answer='with O-ring and glass of ice water', explanation='Feynman dramatically demonstrated the Challenger O-ring failure by showing how rubber becomes brittle in cold using a glass of ice water.'),
+        
+        # Medical Pioneers
+        QAPair(topic='scientist', example='Edward Jenner', passage='Jenner created the first vaccine by using cowpox to prevent smallpox in 1796. He tested it first on his gardener\'s 8-year-old son, James Phipps. The word "vaccine" comes from "vacca," the Latin word for cow. His work led to the complete eradication of smallpox—the only human disease ever eliminated. He was initially ridiculed by the medical establishment.', entity='tested on gardener\'s son', question='Who was the first person Jenner tested his smallpox vaccine on?', answer='his gardener\'s 8-year-old son James Phipps', explanation='Jenner first tested his smallpox vaccine on James Phipps, his gardener\'s 8-year-old son, in 1796.'),
+        
+        QAPair(topic='scientist', example='Wilhelm Röntgen', passage='Röntgen discovered X-rays accidentally in 1895 while experimenting with cathode rays. The first X-ray image was of his wife\'s hand, showing her wedding ring. He refused to patent his discovery, believing it should benefit all humanity. He won the first Nobel Prize in Physics in 1901. He called them "X-rays" because he didn\'t understand what they were—X meaning unknown.', entity='first X-ray of wife\'s hand', question='What was the subject of the first X-ray image ever taken?', answer='his wife\'s hand showing her wedding ring', explanation='The first X-ray image was of Röntgen\'s wife\'s hand, clearly showing her wedding ring and bones.'),
+        
+        # Chemistry Pioneers
+        QAPair(topic='scientist', example='Antoine Lavoisier', passage='Lavoisier is called the "Father of Modern Chemistry" for establishing the law of conservation of mass. He named oxygen and hydrogen and helped create the metric system. He was executed during the French Revolution in 1794 at age 50. The judge reportedly said "The Republic needs neither scientists nor chemists." His wife Marie-Anne was also a chemist and illustrated his work.', entity='executed during French Revolution', question='How did Lavoisier die?', answer='executed during French Revolution', explanation='Lavoisier was executed by guillotine during the French Revolution in 1794, with the judge saying "The Republic needs neither scientists nor chemists."'),
+        
+        QAPair(topic='scientist', example='Dorothy Hodgkin', passage='Hodgkin won the Nobel Prize in Chemistry in 1964 for determining the structure of vitamin B12 using X-ray crystallography. She was the third woman to win a Nobel Prize in science and the only British woman to win a Nobel in science. She suffered from severe rheumatoid arthritis but continued her research despite painful, deformed hands. She also determined the structure of penicillin and insulin.', entity='only British woman Nobel science', question='What distinction does Dorothy Hodgkin hold among British Nobel laureates?', answer='only British woman to win Nobel in science', explanation='Dorothy Hodgkin is the only British woman to win a Nobel Prize in science, winning Chemistry in 1964.'),
+    ]
+
+if __name__ == "__main__":
+    db = DatabaseManager()
+    
+    # Add expanded data
+    politician_expansion = expand_politician_data()
+    scientist_expansion = expand_scientist_data()
+    
+    print(f"--- Adding {len(politician_expansion)} more politician questions ---")
+    for i, qa_pair in enumerate(politician_expansion):
+        try:
+            qa_id = db.save_qa_pair(qa_pair)
+            if i < 5:
+                print(f'Added politician QA pair: {qa_pair.question[:70]}... (ID: {qa_id})')
+        except Exception as e:
+            print(f'Error inserting QA pair: {e}')
+    
+    print(f"\n--- Adding {len(scientist_expansion)} more scientist questions ---")
+    for i, qa_pair in enumerate(scientist_expansion):
+        try:
+            qa_id = db.save_qa_pair(qa_pair)
+            if i < 5:
+                print(f'Added scientist QA pair: {qa_pair.question[:70]}... (ID: {qa_id})')
+        except Exception as e:
+            print(f'Error inserting QA pair: {e}')
+    
+    # Show final statistics
+    stats = db.get_dataset_stats()
+    print(f'\n📊 Updated Dataset Statistics:')
+    for topic, count in stats['topic_counts'].items():
+        print(f'  {topic}: {count} pairs')
+    print(f'  Total: {stats["total_pairs"]} pairs')

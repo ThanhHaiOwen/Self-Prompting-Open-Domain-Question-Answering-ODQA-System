@@ -1,0 +1,443 @@
+COMPREHENSIVE ODQA SYSTEM TEST REPORT
+==================================================
+Generated: 2025-07-22 23:13:37
+Total Tests: 60
+
+SUMMARY STATISTICS
+--------------------
+Successful Tests: 57
+Failed Tests: 3
+Success Rate: 95.0%
+
+Average Confidence: 0.761
+Average Processing Time: 3.83s
+
+
+GEOGRAPHY CATEGORY RESULTS
+==============================
+
+Question: What is the capital of Japan?
+Answer: Tokyo
+Confidence: 0.907
+Explanation: Tokyo is the capital and largest city of Japan, serving as the political, economic, and cultural center of the country.
+Processing Time: 3.82s
+----------------------------------------
+
+Question: What is the capital of Brazil?
+Answer: Brasilia
+Confidence: 0.902
+Explanation: Brasilia is the capital of Brazil, a planned city that was built in the 1950s and became the capital in 1960, replacing Rio de Janeiro.
+Processing Time: 3.84s
+----------------------------------------
+
+Question: What is the capital of Australia?
+Answer: Canberra
+Confidence: 0.913
+Explanation: Canberra is the capital of Australia, located between Sydney and Melbourne, and serves as the seat of the Australian government.
+Processing Time: 3.81s
+----------------------------------------
+
+Question: What is the capital of France?
+Answer: Paris
+Confidence: 0.905
+Explanation: Paris has been the capital of France for centuries.
+Processing Time: 3.81s
+----------------------------------------
+
+Question: What is the highest mountain in the world?
+Answer: Mount Everest
+Confidence: 0.848
+Explanation: Mount Everest is the highest mountain in the world at 8,848.86 meters above sea level, located in the Himalayas between Nepal and Tibet.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: What is the longest river in the world?
+Answer: Amazon River
+Confidence: 0.872
+Explanation: The Amazon River is the longest river in the world, stretching approximately 6,400 kilometers from the Peruvian Andes to the Atlantic Ocean in Brazil.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: Which city is Japan's capital?
+Answer: Tokyo
+Confidence: 0.883
+Explanation: Tokyo is the capital and largest city of Japan, serving as the political, economic, and cultural center of the country.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: Where is the capital of Brazil?
+Answer: Brasilia
+Confidence: 0.892
+Explanation: Brasilia is the capital of Brazil, a planned city that was built in the 1950s and became the capital in 1960, replacing Rio de Janeiro.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: What mountain is the tallest?
+Answer: Mount Everest
+Confidence: 0.777
+Explanation: Mount Everest is the highest mountain in the world at 8,848.86 meters above sea level, located in the Himalayas between Nepal and Tibet.
+Processing Time: 3.82s
+----------------------------------------
+
+Question: Which river is the longest?
+Answer: Amazon River
+Confidence: 0.829
+Explanation: The Amazon River is the longest river in the world, stretching approximately 6,400 kilometers from the Peruvian Andes to the Atlantic Ocean in Brazil.
+Processing Time: 3.83s
+----------------------------------------
+
+HISTORICAL_FIGURES CATEGORY RESULTS
+==============================
+
+Question: Who painted the Mona Lisa?
+Answer: Leonardo da Vinci
+Confidence: 0.836
+Explanation: Leonardo da Vinci painted the Mona Lisa during the Italian Renaissance, creating one of the most famous and recognizable paintings in the world.
+Processing Time: 3.81s
+----------------------------------------
+
+Question: Who was the last pharaoh of Ancient Egypt?
+Answer: Cleopatra
+Confidence: 0.815
+Explanation: Cleopatra VII was the last active pharaoh of Ancient Egypt, ruling until 30 BCE when Egypt became a Roman province.
+Processing Time: 3.85s
+----------------------------------------
+
+Question: Which artist created the Mona Lisa?
+Answer: Leonardo da Vinci
+Confidence: 0.799
+Explanation: Leonardo da Vinci painted the Mona Lisa during the Italian Renaissance, creating one of the most famous and recognizable paintings in the world.
+Processing Time: 3.81s
+----------------------------------------
+
+Question: Who was Cleopatra?
+Answer: Cleopatra
+Confidence: 0.705
+Explanation: Cleopatra VII was the last active pharaoh of Ancient Egypt, ruling until 30 BCE when Egypt became a Roman province.
+Processing Time: 3.84s
+----------------------------------------
+
+Question: Which Renaissance artist painted the Last Supper?
+Answer: Leonardo da Vinci
+Confidence: 0.536
+Explanation: Leonardo da Vinci painted the Mona Lisa during the Italian Renaissance, creating one of the most famous and recognizable paintings in the world.
+Processing Time: 3.82s
+----------------------------------------
+
+Question: Who ruled Ancient Egypt last?
+Answer: Cleopatra
+Confidence: 0.720
+Explanation: Cleopatra VII was the last active pharaoh of Ancient Egypt, ruling until 30 BCE when Egypt became a Roman province.
+Processing Time: 3.85s
+----------------------------------------
+
+Question: What famous painting did Leonardo create?
+Answer: Leonardo da Vinci
+Confidence: 0.610
+Explanation: Leonardo da Vinci painted the Mona Lisa during the Italian Renaissance, creating one of the most famous and recognizable paintings in the world.
+Processing Time: 3.82s
+----------------------------------------
+
+Question: Which pharaoh was the last of Egypt?
+Answer: Cleopatra
+Confidence: 0.806
+Explanation: Cleopatra VII was the last active pharaoh of Ancient Egypt, ruling until 30 BCE when Egypt became a Roman province.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: Who was Leonardo da Vinci?
+Answer: Leonardo da Vinci
+Confidence: 0.594
+Explanation: Leonardo da Vinci painted the Mona Lisa during the Italian Renaissance, creating one of the most famous and recognizable paintings in the world.
+Processing Time: 3.84s
+----------------------------------------
+
+Question: Which Egyptian queen was famous?
+Answer: Cleopatra
+Confidence: 0.715
+Explanation: Cleopatra VII was the last active pharaoh of Ancient Egypt, ruling until 30 BCE when Egypt became a Roman province.
+Processing Time: 3.83s
+----------------------------------------
+
+LITERATURE CATEGORY RESULTS
+==============================
+
+Question: Who wrote Romeo and Juliet?
+Answer: William Shakespeare
+Confidence: 0.854
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: Which playwright created Hamlet?
+Answer: William Shakespeare
+Confidence: 0.601
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.85s
+----------------------------------------
+
+Question: Who authored Romeo and Juliet?
+Answer: William Shakespeare
+Confidence: 0.832
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: Which writer is known for Shakespeare's plays?
+Answer: William Shakespeare
+Confidence: 0.637
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.85s
+----------------------------------------
+
+Question: Who created the character Romeo?
+Answer: William Shakespeare
+Confidence: 0.689
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.82s
+----------------------------------------
+
+Question: Which English playwright wrote Macbeth?
+Answer: William Shakespeare
+Confidence: 0.622
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.84s
+----------------------------------------
+
+Question: Who is the author of Hamlet?
+Answer: William Shakespeare
+Confidence: 0.599
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: Which writer created Juliet?
+Answer: William Shakespeare
+Confidence: 0.746
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.84s
+----------------------------------------
+
+Question: Who wrote the play Macbeth?
+Answer: William Shakespeare
+Confidence: 0.608
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.82s
+----------------------------------------
+
+Question: Which playwright is most famous?
+Answer: William Shakespeare
+Confidence: 0.545
+Explanation: William Shakespeare wrote Romeo and Juliet, one of his most famous tragedies about young star-crossed lovers, written in the early part of his career.
+Processing Time: 3.83s
+----------------------------------------
+
+POLITICIANS CATEGORY RESULTS
+==============================
+
+Question: Who is the current President of the United States?
+Answer: Joe Biden
+Confidence: 0.817
+Explanation: Joe Biden became the 46th President of the United States on January 20, 2021, and is currently serving in that role.
+Processing Time: 3.76s
+----------------------------------------
+
+Question: Who was the British Prime Minister during World War II?
+ERROR: HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=30)
+----------------------------------------
+
+Question: Who was the first Black president of South Africa?
+Answer: Nelson Mandela
+Confidence: 0.834
+Explanation: Nelson Mandela became the first Black president of South Africa in 1994, serving until 1999, after spending 27 years in prison for his anti-apartheid activism.
+Processing Time: 4.37s
+----------------------------------------
+
+Question: Who was the 44th President of the United States?
+Answer: Barack Obama
+Confidence: 0.887
+Explanation: Barack Obama served as the 44th President from 2009 to 2017.
+Processing Time: 3.80s
+----------------------------------------
+
+Question: Which leader served as British PM during WWII?
+Answer: Winston Churchill
+Confidence: 0.802
+Explanation: Winston Churchill served as British Prime Minister from 1940 to 1945, leading the country through most of World War II with his inspiring leadership and speeches.
+Processing Time: 3.80s
+----------------------------------------
+
+Question: Who led South Africa after apartheid ended?
+Answer: Nelson Mandela
+Confidence: 0.650
+Explanation: Nelson Mandela became the first Black president of South Africa in 1994, serving until 1999, after spending 27 years in prison for his anti-apartheid activism.
+Processing Time: 3.81s
+----------------------------------------
+
+Question: What president served before Trump?
+ERROR: API failed and offline fallback error: No sufficiently similar question found (best similarity: 0.486)
+----------------------------------------
+
+Question: Who was Nelson Mandela?
+Answer: Nelson Mandela
+Confidence: 0.663
+Explanation: Nelson Mandela became the first Black president of South Africa in 1994, serving until 1999, after spending 27 years in prison for his anti-apartheid activism.
+Processing Time: 3.79s
+----------------------------------------
+
+Question: Which Churchill led Britain in war?
+Answer: Winston Churchill
+Confidence: 0.723
+Explanation: Winston Churchill served as British Prime Minister from 1940 to 1945, leading the country through most of World War II with his inspiring leadership and speeches.
+Processing Time: 3.80s
+----------------------------------------
+
+Question: Who is Joe Biden?
+Answer: United States
+Confidence: 0.737
+Explanation: The passage explicitly states that Joe Biden is an "American politician".  The United States is commonly referred to as America. Therefore, the answer is the United States.
+Processing Time: 3.79s
+----------------------------------------
+
+SCIENTISTS CATEGORY RESULTS
+==============================
+
+Question: Who was the first woman to win a Nobel Prize?
+Answer: Marie Curie
+Confidence: 0.857
+Explanation: Marie Curie was the first woman to win a Nobel Prize, receiving the Nobel Prize in Physics in 1903 for her research on radioactivity, and later won the Nobel Prize in Chemistry in 1911.
+Processing Time: 3.79s
+----------------------------------------
+
+Question: Who proposed the theory of evolution through natural selection?
+Answer: Charles Darwin
+Confidence: 0.902
+Explanation: Charles Darwin proposed the theory of evolution through natural selection in his groundbreaking book On the Origin of Species published in 1859.
+Processing Time: 3.78s
+----------------------------------------
+
+Question: Who formulated the laws of motion and universal gravitation?
+Answer: Isaac Newton
+Confidence: 0.943
+Explanation: Isaac Newton formulated the fundamental laws of motion and universal gravitation, publishing his groundbreaking work in Principia Mathematica in 1687.
+Processing Time: 3.82s
+----------------------------------------
+
+Question: Who developed the theory of relativity?
+Answer: Albert Einstein
+Confidence: 0.932
+Explanation: Einstein developed both special and general theories of relativity.
+Processing Time: 3.79s
+----------------------------------------
+
+Question: Which scientist studied radioactivity?
+ERROR: API failed and offline fallback error: No sufficiently similar question found (best similarity: 0.397)
+----------------------------------------
+
+Question: Who wrote On the Origin of Species?
+Answer: Charles Darwin
+Confidence: 0.645
+Explanation: Charles Darwin proposed the theory of evolution through natural selection in his groundbreaking book On the Origin of Species published in 1859.
+Processing Time: 3.79s
+----------------------------------------
+
+Question: Which physicist discovered gravity laws?
+Answer: Isaac Newton
+Confidence: 0.771
+Explanation: Isaac Newton formulated the fundamental laws of motion and universal gravitation, publishing his groundbreaking work in Principia Mathematica in 1687.
+Processing Time: 3.79s
+----------------------------------------
+
+Question: Who won Nobel Prizes in both Physics and Chemistry?
+Answer: Marie Curie
+Confidence: 0.682
+Explanation: Marie Curie was the first woman to win a Nobel Prize, receiving the Nobel Prize in Physics in 1903 for her research on radioactivity, and later won the Nobel Prize in Chemistry in 1911.
+Processing Time: 3.80s
+----------------------------------------
+
+Question: Which scientist is known for evolution theory?
+Answer: Charles Darwin
+Confidence: 0.683
+Explanation: Charles Darwin proposed the theory of evolution through natural selection in his groundbreaking book On the Origin of Species published in 1859.
+Processing Time: 3.84s
+----------------------------------------
+
+Question: Who created the theory of relativity?
+Answer: Albert Einstein
+Confidence: 0.924
+Explanation: Einstein developed both special and general theories of relativity.
+Processing Time: 3.81s
+----------------------------------------
+
+TECHNOLOGY CATEGORY RESULTS
+==============================
+
+Question: Who invented the World Wide Web?
+Answer: Tim Berners-Lee
+Confidence: 0.846
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.85s
+----------------------------------------
+
+Question: Which scientist created the internet?
+Answer: Tim Berners-Lee
+Confidence: 0.707
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.85s
+----------------------------------------
+
+Question: Who developed the WWW?
+Answer: Tim Berners-Lee
+Confidence: 0.676
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.83s
+----------------------------------------
+
+Question: Which inventor made the web?
+Answer: Tim Berners-Lee
+Confidence: 0.797
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.84s
+----------------------------------------
+
+Question: Who created the first website?
+Answer: Tim Berners-Lee
+Confidence: 0.653
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.87s
+----------------------------------------
+
+Question: Which computer scientist invented the web?
+Answer: Tim Berners-Lee
+Confidence: 0.775
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.82s
+----------------------------------------
+
+Question: Who made the World Wide Web?
+Answer: Tim Berners-Lee
+Confidence: 0.824
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.81s
+----------------------------------------
+
+Question: Which person invented web browsing?
+Answer: Tim Berners-Lee
+Confidence: 0.708
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.85s
+----------------------------------------
+
+Question: Who developed web technology?
+Answer: Tim Berners-Lee
+Confidence: 0.701
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.84s
+----------------------------------------
+
+Question: Which scientist created HTML?
+Answer: Tim Berners-Lee
+Confidence: 0.639
+Explanation: Tim Berners-Lee invented the World Wide Web in 1989 while working at CERN, creating the foundation for the modern internet as we know it today.
+Processing Time: 3.84s
+----------------------------------------
