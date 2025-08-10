@@ -4,7 +4,7 @@ Orchestrates the complete question-answering process
 """
 
 import logging
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass
 from datetime import datetime
 
@@ -233,7 +233,7 @@ class QAEngine:
                 processing_time=processing_time
             )
     
-    def parse_answer_response(self, response: str) -> tuple[str, Optional[str]]:
+    def parse_answer_response(self, response: str) -> Tuple[str, Optional[str]]:
         """Parse the Gemini response to extract answer and explanation"""
         lines = response.strip().split('\n')
         

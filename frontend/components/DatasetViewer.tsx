@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Database, Eye, RefreshCw, Filter } from 'lucide-react';
 import { DatasetSample, TopicsConfig, SystemStatus } from '@/types';
-import { apiClient, handleApiError } from '@/lib/api';
+import { api, handleApiError } from '@/lib/api';
 import { truncateText } from '@/lib/utils';
 
 export default function DatasetViewer() {
@@ -17,12 +17,12 @@ export default function DatasetViewer() {
 
   const fetchTopics = async () => {
     try {
-      const [topicsData, statusData] = await Promise.all([
-        apiClient.getTopics(),
-        apiClient.getSystemStatus()
+      const [topicsResponse, statusResponse] = await Promise.all([
+        api.getTopics(),
+        api.getStatus()
       ]);
-      setTopics(topicsData);
-      setSystemStatus(statusData);
+      setTopics(topicsResponse.data);
+      setSystemStatus(statusResponse.data);
     } catch (err) {
       console.error('Error fetching topics:', err);
     }
@@ -33,11 +33,8 @@ export default function DatasetViewer() {
       setLoading(true);
       setError(null);
       
-      const samplesData = await apiClient.getDatasetSample(
-        selectedTopic || undefined,
-        limit
-      );
-      setSamples(samplesData);
+      const response = await api.getDataset(limit, selectedTopic || undefined);
+      setSamples(response.data.sample || response.data.samples || response.data);
     } catch (err) {
       setError(handleApiError(err));
     } finally {

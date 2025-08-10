@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Clock, RefreshCw } from 'lucide-react';
 import { SystemStatus as SystemStatusType } from '@/types';
-import { apiClient, handleApiError } from '@/lib/api';
+import { api, handleApiError } from '@/lib/api';
 import { formatNumber } from '@/lib/utils';
 
 export default function SystemStatus() {
@@ -15,8 +15,8 @@ export default function SystemStatus() {
   const fetchStatus = async () => {
     try {
       setLoading(true);
-      const statusData = await apiClient.getSystemStatus();
-      setStatus(statusData);
+      const response = await api.getStatus();
+      setStatus(response.data);
       setError(null);
     } catch (err) {
       setError(handleApiError(err));
@@ -28,15 +28,15 @@ export default function SystemStatus() {
   const handlePrepareSystem = async (forceRegenerate: boolean = false) => {
     try {
       setPreparing(true);
-      await apiClient.prepareSystem(forceRegenerate);
+      await api.prepareSystem(forceRegenerate);
       
       // Poll for status updates
       const pollInterval = setInterval(async () => {
         try {
-          const statusData = await apiClient.getSystemStatus();
-          setStatus(statusData);
+          const response = await api.getStatus();
+          setStatus(response.data);
           
-          if (statusData.system_ready) {
+          if (response.data.system_ready) {
             clearInterval(pollInterval);
             setPreparing(false);
           }

@@ -17,62 +17,75 @@ logger = logging.getLogger(__name__)
 
 class GeminiClient:
     """Client for interacting with Google Gemini API"""
-    
+
     def __init__(self, api_key: str = GEMINI_API_KEY):
         """Initialize Gemini client"""
-        genai.configure(api_key=api_key)
-        
-        # Configure the model
-        self.generation_config = {
-            "temperature": TEMPERATURE,
-            "top_p": 1,
-            "top_k": 1,
-            "max_output_tokens": MAX_TOKENS,
-        }
-        
-        self.safety_settings = [
-            {
-                "category": "HARM_CATEGORY_HARASSMENT",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-                "category": "HARM_CATEGORY_HATE_SPEECH",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-                "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-            },
-            {
-                "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
-                "threshold": "BLOCK_MEDIUM_AND_ABOVE"
-            },
-        ]
-        
-        self.model = genai.GenerativeModel(
-            model_name="gemini-1.5-flash",
-            generation_config=self.generation_config,
-            safety_settings=self.safety_settings
-        )
-        
-        logger.info("Gemini client initialized successfully")
+        try:
+            genai.configure(api_key=api_key)
+
+            # Configure the model
+            self.generation_config = {
+                "temperature": TEMPERATURE,
+                "top_p": 1,
+                "top_k": 1,
+                "max_output_tokens": MAX_TOKENS,
+            }
+
+            self.safety_settings = [
+                {
+                    "category": "HARM_CATEGORY_HARASSMENT",
+                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+                },
+                {
+                    "category": "HARM_CATEGORY_HATE_SPEECH",
+                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+                },
+                {
+                    "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+                },
+                {
+                    "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+                    "threshold": "BLOCK_MEDIUM_AND_ABOVE"
+                },
+            ]
+
+            # Try to create the model - this might fail with older API versions
+            try:
+                self.model = genai.GenerativeModel(
+                    model_name="gemini-1.5-flash",
+                    generation_config=self.generation_config,
+                    safety_settings=self.safety_settings
+                )
+                logger.info("Gemini client initialized successfully")
+            except AttributeError:
+                # Fallback for older API versions
+                logger.warning("GenerativeModel not available, using fallback mode")
+                self.model = None
+        except Exception as e:
+            logger.error(f"Failed to initialize Gemini client: {e}")
+            self.model = None
     
     def generate_text(self, prompt: str, max_retries: int = 3) -> Optional[str]:
         """Generate text using Gemini API with retry logic"""
+        if not self.model:
+            logger.warning("Gemini model not available, returning None")
+            return None
+
         for attempt in range(max_retries):
             try:
                 response = self.model.generate_content(prompt)
-                
+
                 if response.text:
                     return response.text.strip()
                 else:
                     logger.warning(f"Empty response from Gemini API (attempt {attempt + 1})")
-                    
+
             except Exception as e:
                 logger.error(f"Error calling Gemini API (attempt {attempt + 1}): {e}")
                 if attempt < max_retries - 1:
                     time.sleep(2 ** attempt)  # Exponential backoff
-                
+
         logger.error(f"Failed to get response from Gemini API after {max_retries} attempts")
         return None
     

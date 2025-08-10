@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Loader2, HelpCircle, Clock, Target, MessageSquare } from 'lucide-react';
 import { QuestionResponse } from '@/types';
-import { apiClient, handleApiError } from '@/lib/api';
+import { api, handleApiError } from '@/lib/api';
 import { formatTime } from '@/lib/utils';
 
 export default function QuestionAnswering() {
@@ -16,8 +16,10 @@ export default function QuestionAnswering() {
 
   const fetchSampleQuestions = async () => {
     try {
-      const questions = await apiClient.getSampleQuestions();
-      setSampleQuestions(questions.slice(0, 5)); // Show first 5
+      const response = await api.getDataset(5);
+      const samples = response.data.sample || response.data.samples || response.data;
+      const questions = samples.map((item: any) => item.question);
+      setSampleQuestions(questions);
     } catch (err) {
       console.error('Error fetching sample questions:', err);
     }
@@ -40,12 +42,9 @@ export default function QuestionAnswering() {
       setError(null);
       setResult(null);
 
-      const response = await apiClient.askQuestion({
-        question: question.trim(),
-        n_demonstrations: nDemonstrations
-      });
+      const response = await api.askQuestion(question.trim());
 
-      setResult(response);
+      setResult(response.data);
     } catch (err) {
       setError(handleApiError(err));
     } finally {
