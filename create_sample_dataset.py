@@ -356,9 +356,9 @@ def create_sample_dataset():
     """Create a sample dataset with the predefined QA pairs"""
     print("Creating sample dataset with 300 QA pairs...")
     
-    # Initialize database and sentence transformer
+    # Initialize database and sentence transformer (lightweight model)
     db = DatabaseManager()
-    model = SentenceTransformer('all-mpnet-base-v2')
+    model = SentenceTransformer('all-MiniLM-L6-v2')
     
     # Clear existing data
     db.clear_database()
