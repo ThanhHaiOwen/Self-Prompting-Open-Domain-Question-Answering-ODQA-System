@@ -1,3 +1,5 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch>=2.0.0
 fastapi>=0.104.1
 uvicorn>=0.24.0
 pydantic>=2.5.0
@@ -6,7 +8,6 @@ sentence-transformers>=2.2.2
 scikit-learn>=1.4.0
 numpy>=1.24.3
 pandas>=2.1.4
-# sqlite3 is built into Python
 python-dotenv==1.0.0
 httpx==0.25.2
 python-multipart==0.0.6
