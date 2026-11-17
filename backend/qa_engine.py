@@ -14,6 +14,7 @@ from clustering_retrieval import ClusteringRetrieval
 from dataset_generator import DatasetGenerator
 from config import MAX_DEMONSTRATIONS
 from offline_qa import OfflineQAEngine
+from seed_data import auto_seed_if_empty
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -36,13 +37,14 @@ class QAEngine:
     def __init__(self):
         """Initialize the QA engine with all components"""
         self.db = DatabaseManager()
+        auto_seed_if_empty(self.db)
         self.gemini = GeminiClient()
         self.clustering = ClusteringRetrieval(self.db)
         self.dataset_generator = DatasetGenerator(self.db, self.gemini)
         self.offline_qa = OfflineQAEngine()
 
-        self.system_ready = False
-        logger.info("QA Engine initialized")
+        self.system_ready = True
+        logger.info("QA Engine initialized successfully with seed data")
     
     def check_system_status(self) -> Dict[str, Any]:
         """Check the current status of the system"""

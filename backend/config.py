@@ -5,9 +5,11 @@ Based on the research paper's specifications
 
 import os
 from typing import Dict, List
-from dotenv import load_dotenv
-
-load_dotenv()
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 # API Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
@@ -84,8 +86,8 @@ PROMPT_TEMPLATES = {
     "final_qa": "Question: {question}\nAnswer: {answer}\nExplanation: {explanation}"
 }
 
-# Sentence transformer model for embeddings
-SENTENCE_TRANSFORMER_MODEL = "all-mpnet-base-v2"
+# Sentence transformer model for embeddings (using all-MiniLM-L6-v2 for lightweight memory < 200MB)
+SENTENCE_TRANSFORMER_MODEL = os.getenv("SENTENCE_TRANSFORMER_MODEL", "all-MiniLM-L6-v2")
 
 # Filtering criteria
 MAX_ANSWER_WORDS = 5

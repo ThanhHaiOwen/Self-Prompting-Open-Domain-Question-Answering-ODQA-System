@@ -14,6 +14,8 @@ import logging
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
+from config import SENTENCE_TRANSFORMER_MODEL
+
 logger = logging.getLogger(__name__)
 
 class OfflineQAEngine:
@@ -23,18 +25,28 @@ class OfflineQAEngine:
         self.db = DatabaseManager()
         self.clustering = ClusteringRetrieval(self.db)
         self.model = None
-        self._load_model()
+        # Lazy load model on demand to save RAM on startup
     
     def _load_model(self):
-        """Load the sentence transformer model"""
-        try:
-            self.model = SentenceTransformer('all-mpnet-base-v2')
-            logger.info("Sentence transformer model loaded for offline QA")
-        except Exception as e:
-            logger.error(f"Failed to load sentence transformer model: {e}")
+        """Load the lightweight sentence transformer model on demand"""
+        if self.model is None:
+            try:
+                import torch
+                torch.set_num_threads(1)
+            except Exception:
+                pass
+            try:
+                model_name = SENTENCE_TRANSFORMER_MODEL or 'all-MiniLM-L6-v2'
+                logger.info(f"Loading lightweight sentence transformer model: {model_name}")
+                self.model = SentenceTransformer(model_name)
+                logger.info("Sentence transformer model loaded successfully")
+            except Exception as e:
+                logger.error(f"Failed to load sentence transformer model: {e}")
     
     def find_best_match(self, question: str, top_k: int = 5) -> List[Dict]:
         """Find the best matching QA pairs for a given question"""
+        if not self.model:
+            self._load_model()
         if not self.model:
             return []
         
